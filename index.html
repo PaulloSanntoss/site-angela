@@ -6,7 +6,7 @@
 <title>Rosangela Marques | Psicóloga Clínica</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream: #F3EEE3;
@@ -16,8 +16,19 @@
     --ink-soft: #514F45;
     --green: #33422F;
     --green-dark: #232E20;
-    --line: rgba(43,42,37,0.14);
-    --max: 1120px;
+    --line: rgba(43,42,37,0.16);
+    --max: 1080px;
+
+    /* ---- typographic scale (shared across the whole site) ---- */
+    --fs-eyebrow: 12px;
+    --fs-small: 15px;
+    --fs-body: 17.5px;
+    --fs-body-lg: 19px;
+    --fs-h3: 19px;
+    --fs-h2: clamp(26px, 3vw, 36px);
+    --fs-h1: clamp(36px, 4.6vw, 54px);
+    --fs-quote: clamp(20px, 2.3vw, 24px);
+    --lh-body: 1.72;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -25,7 +36,8 @@
     font-family: 'Karla', sans-serif;
     color: var(--ink);
     background: var(--cream);
-    line-height: 1.6;
+    line-height: var(--lh-body);
+    font-size: var(--fs-body);
     -webkit-font-smoothing: antialiased;
   }
   img{display:block; max-width:100%; height:auto;}
@@ -34,7 +46,7 @@
   h1,h2,h3{
     font-family: 'Fraunces', serif;
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.18;
     letter-spacing: -0.01em;
   }
 
@@ -44,6 +56,16 @@
     padding: 0 32px;
   }
 
+  .eyebrow{
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
   .btn{
     display: inline-flex;
     align-items: center;
@@ -51,7 +73,7 @@
     background: var(--green);
     color: #F3EEE3;
     text-decoration: none;
-    padding: 15px 28px;
+    padding: 16px 30px;
     font-family: 'Karla', sans-serif;
     font-weight: 600;
     font-size: 15px;
@@ -63,51 +85,47 @@
     background: var(--green-dark);
     transform: translateY(-1px);
   }
-  .btn svg{ width:16px; height:16px; flex-shrink:0; }
 
   /* ---------- HEADER / HERO ---------- */
   header.hero{
     background: var(--cream);
-    padding: 44px 0 72px;
+    padding: 40px 0 64px;
   }
   .top-row{
     display:flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
   }
   .brand-name{
     font-family:'Fraunces', serif;
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 500;
   }
   .brand-role{
     font-family:'Karla', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.08em;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 0.1em;
     color: var(--ink-soft);
     margin-top: 4px;
   }
   .hero-grid{
     display:grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 56px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 52px;
     align-items: center;
   }
   .hero-copy h1{
-    font-size: clamp(34px, 4.4vw, 52px);
-    margin-bottom: 22px;
+    font-size: var(--fs-h1);
+    margin-bottom: 20px;
   }
   .hero-copy .sub{
-    font-family:'Fraunces', serif;
-    font-style: italic;
-    font-size: clamp(18px, 2vw, 22px);
+    font-family:'Karla', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
     color: var(--ink-soft);
-    max-width: 30ch;
-    margin-bottom: 34px;
-  }
-  .hero-photo{
-    position: relative;
+    max-width: 40ch;
+    margin-bottom: 32px;
   }
   .hero-photo img{
     width: 100%;
@@ -116,78 +134,90 @@
     object-position: center 25%;
   }
 
-  /* ---------- SECTION 1 : padrão ---------- */
+  /* generic section title treatment */
+  section h2{ font-size: var(--fs-h2); }
+
+  /* ---------- SECTION: você se acostumou ---------- */
   section.pattern{
     background: var(--cream-2);
-    padding: 84px 0;
+    padding: 92px 0;
   }
   .pattern-grid{
     display:grid;
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 64px;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 60px;
     align-items: start;
   }
-  .pattern h2{
-    font-size: clamp(24px, 2.6vw, 32px);
-    max-width: 14ch;
-  }
-  .pattern p{
+  .pattern h2{ max-width: 13ch; }
+  .pattern-copy p{
     color: var(--ink-soft);
-    max-width: 58ch;
-    margin-bottom: 18px;
-    font-size: 16px;
+    max-width: 52ch;
+    margin-bottom: 20px;
+    font-size: var(--fs-body);
+  }
+  .pattern-copy p.closing{
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+    line-height: 1.6;
+    margin-top: 28px;
   }
   .pattern strong{ color: var(--ink); font-weight: 700; }
 
-  /* ---------- SECTION 2 : reconhecimento ---------- */
+  /* ---------- SECTION: 4 padrões ---------- */
   section.recognize{
     background: var(--sage);
-    padding: 88px 0;
+    padding: 96px 0;
+  }
+  .recognize-lead{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--fs-quote);
+    color: var(--ink);
+    max-width: 34ch;
+    line-height: 1.5;
+    margin-bottom: 20px;
   }
   .recognize > .wrap > h2{
-    font-size: clamp(24px, 2.8vw, 34px);
     max-width: 22ch;
-    margin-bottom: 48px;
+    margin-bottom: 56px;
   }
   .recognize-list{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px 56px;
+    gap: 48px 64px;
   }
   .recognize-item{
-    padding-top: 20px;
+    padding-top: 24px;
     border-top: 1px solid var(--line);
   }
   .recognize-item h3{
     font-family:'Karla', sans-serif;
     font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: var(--fs-h3);
+    margin-bottom: 12px;
   }
   .recognize-item p{
     color: var(--ink-soft);
-    font-size: 15px;
+    font-size: 16.5px;
   }
 
-  /* ---------- SECTION 3 : começar de onde está ---------- */
+  /* ---------- SECTION: você pode começar de onde está ---------- */
   section.start{
     background: var(--cream);
-    padding: 96px 0;
+    padding: 100px 0;
   }
-  section.start h2{
-    font-size: clamp(24px, 2.8vw, 32px);
-    max-width: 20ch;
-    margin-bottom: 8px;
-  }
+  section.start h2{ max-width: 20ch; margin-bottom: 8px; }
   .start-rule{
     width: 64px;
     height: 2px;
     background: var(--green);
-    margin: 22px 0 44px;
+    margin: 24px 0 44px;
   }
   .start-grid{
     display:grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: 0.85fr 1.15fr;
     gap: 56px;
     align-items: center;
   }
@@ -195,58 +225,165 @@
     aspect-ratio: 3/4;
     object-fit: cover;
   }
+  .start-copy{ max-width: 46ch; }
   .start-copy p{
     color: var(--ink-soft);
-    margin-bottom: 18px;
-    font-size: 16px;
-    max-width: 46ch;
+    margin-bottom: 20px;
+    font-size: var(--fs-body);
   }
   .start-copy p.highlight{
     color: var(--ink);
     font-family:'Fraunces', serif;
     font-style: italic;
-    font-size: 19px;
-    line-height: 1.5;
-    margin-top: 28px;
+    font-size: var(--fs-quote);
+    line-height: 1.55;
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 2px solid var(--green);
   }
 
-  /* ---------- SECTION 4 : abordagem ---------- */
+  /* ---------- SECTION: como funciona a terapia ---------- */
+  section.howworks{
+    background: var(--cream-2);
+    padding: 100px 0;
+  }
+  section.howworks h2{ max-width: 20ch; margin-bottom: 56px; }
+  .howworks-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  .howworks-item .num{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .howworks-item h3{
+    font-family:'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .howworks-item p{
+    color: var(--ink-soft);
+    font-size: 15.5px;
+  }
+
+  /* ---------- SECTION: abordagem (verde) ---------- */
   section.approach{
     background: var(--green);
     color: #EDE8DA;
-    padding: 88px 0;
+    padding: 96px 0;
   }
   .approach-intro{
     font-family:'Fraunces', serif;
-    font-size: clamp(20px, 2.4vw, 26px);
-    max-width: 34ch;
-    margin-bottom: 56px;
-    line-height: 1.4;
+    font-size: var(--fs-quote);
+    max-width: 36ch;
+    margin-bottom: 20px;
+    line-height: 1.45;
+  }
+  .approach-intro.closing{
+    font-style: italic;
+    margin-top: 56px;
+    margin-bottom: 0;
+    color: #F3EEE3;
   }
   .approach-grid{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 36px;
+    gap: 40px;
+    margin-top: 56px;
   }
   .approach-item .label{
     font-family:'Karla', sans-serif;
     font-weight: 700;
     font-size: 13px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     color: #C7CDBF;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
     border-bottom: 1px solid rgba(237,232,218,0.25);
   }
   .approach-item p{
-    font-size: 15px;
+    font-size: 15.5px;
     color: #E5E0D2;
   }
 
-  /* ---------- SECTION 5 : CTA final ---------- */
+  /* ---------- SECTION: sobre mim ---------- */
+  section.about{
+    background: var(--cream);
+    padding: 100px 0;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .about h2{ max-width: 12ch; }
+  .about-copy p{
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    font-size: var(--fs-body);
+    max-width: 54ch;
+  }
+  .about-meta{
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display:flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .about-meta div{ font-size: 14px; }
+  .about-meta .label{
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  /* ---------- SECTION: informações do atendimento ---------- */
+  section.info{
+    background: var(--sage);
+    padding: 56px 0;
+  }
+  .info-grid{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 48px;
+    text-align: center;
+  }
+  .info-item{
+    min-width: 160px;
+  }
+  .info-item .label{
+    font-family:'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  .info-item .value{
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  /* ---------- SECTION: CTA final ---------- */
   section.cta{
     background: var(--cream-2);
-    padding: 96px 0;
+    padding: 100px 0;
   }
   .cta-grid{
     display:grid;
@@ -255,12 +392,20 @@
     align-items: center;
   }
   .cta-copy h2{
-    font-size: clamp(28px, 3.6vw, 40px);
-    margin-bottom: 22px;
+    font-size: var(--fs-h2);
+    margin-bottom: 18px;
   }
-  .cta-copy p{
+  .cta-copy .lead{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: var(--fs-body-lg);
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .cta-copy p.support{
     color: var(--ink-soft);
-    font-size: 16px;
+    font-size: var(--fs-body);
     max-width: 42ch;
     margin-bottom: 32px;
   }
@@ -306,23 +451,35 @@
   .foot-tag{ margin-top: 6px; color: #A9A492; font-size: 13px; }
 
   /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 900px){
+  @media (max-width: 980px){
+    :root{
+      --fs-h1: clamp(32px, 7vw, 44px);
+      --fs-h2: clamp(24px, 6vw, 30px);
+      --fs-body: 16.5px;
+      --fs-quote: 20px;
+    }
     .wrap{ padding: 0 22px; }
-    .hero-grid, .pattern-grid, .start-grid, .cta-grid{
+    .hero-grid, .pattern-grid, .start-grid, .cta-grid, .about-grid{
       grid-template-columns: 1fr;
     }
     .hero-photo{ order: -1; max-width: 340px; margin: 0 auto 8px; }
-    .recognize-list{ grid-template-columns: 1fr; }
+    .recognize-list{ grid-template-columns: 1fr; gap: 36px; }
+    .howworks-grid{ grid-template-columns: repeat(2, 1fr); }
     .approach-grid{ grid-template-columns: repeat(2, 1fr); }
-    .top-row{ flex-direction: column; gap: 20px; margin-bottom: 40px; }
-    .cta-photo{ max-width: 320px; margin: 0 auto; }
+    .top-row{ flex-direction: column; gap: 18px; margin-bottom: 36px; }
+    .cta-photo{ max-width: 300px; margin: 0 auto; }
     .foot-grid{ flex-direction: column; align-items: flex-start; text-align:left; }
     .foot-right{ text-align:left; }
+    .info-grid{ gap: 32px; }
   }
   @media (max-width: 560px){
-    header.hero{ padding: 32px 0 48px; }
-    section{ padding-top: 64px !important; padding-bottom: 64px !important; }
-    .approach-grid{ grid-template-columns: 1fr; }
+    header.hero{ padding: 30px 0 44px; }
+    section{ padding-top: 60px !important; padding-bottom: 60px !important; }
+    section.info{ padding-top: 40px !important; padding-bottom: 40px !important; }
+    .howworks-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .approach-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .start-copy p.highlight{ font-size: 18px; }
+    .info-grid{ gap: 24px 40px; }
   }
 
   :focus-visible{
@@ -345,7 +502,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <h1>Você dá conta de<br>muita coisa.</h1>
-        <p class="sub">Mas quem cuida de você enquanto você cuida de tudo?</p>
+        <p class="sub">Psicoterapia para mulheres que vivem sobrecarregadas, se cobram demais e percebem que, mesmo dando conta de muita coisa, têm dificuldade de se colocar na própria vida e nos relacionamentos.</p>
         <a href="https://wa.me/5538999294710" class="btn" target="_blank" rel="noopener">
           Agendar atendimento
         </a>
@@ -361,9 +518,10 @@
   <div class="wrap">
     <div class="pattern-grid">
       <h2>Você se acostumou a funcionar assim.</h2>
-      <div>
+      <div class="pattern-copy">
         <p>Você aprendeu a cuidar, resolver, antecipar e seguir em frente. Talvez tenha sido assim que você chegou até aqui: fazendo o que precisava ser feito, mesmo quando estava cansada.</p>
         <p>Com o tempo, esse jeito de funcionar pode trazer um custo: <strong>sobrecarga</strong>, <strong>autocobrança</strong>, <strong>dificuldade de pedir ajuda</strong> e a sensação de que sempre existe algo a mais para dar conta.</p>
+        <p class="closing">Com o tempo, esse jeito de funcionar pode parecer apenas parte de quem você é. Mas muitos desses padrões foram aprendidos — e podem ser compreendidos e transformados.</p>
       </div>
     </div>
   </div>
@@ -371,6 +529,7 @@
 
 <section class="recognize">
   <div class="wrap">
+    <p class="recognize-lead">Talvez o que esteja acontecendo não seja falta de força. Pode existir um padrão por trás da forma como você se relaciona, escolhe e se responsabiliza.</p>
     <h2>Quando o mesmo padrão se repete, algumas coisas também continuam acontecendo.</h2>
     <div class="recognize-list">
       <div class="recognize-item">
@@ -400,10 +559,37 @@
     <div class="start-grid">
       <img src="images/chair.jpg" alt="Poltrona de atendimento em consultório acolhedor, com planta e tapete">
       <div class="start-copy">
-        <p>Você não precisa chegar à terapia sabendo exatamente o que está acontecendo ou tendo todas as respostas.</p>
-        <p>Esse pode ser o espaço para olhar com mais clareza para seus pensamentos, emoções, comportamentos, relações e padrões.</p>
-        <p>Ao compreender o que sustenta determinadas escolhas, você pode começar a perceber outras possibilidades e construir formas diferentes de lidar com o que vive.</p>
-        <p class="highlight">"A mudança começa quando aquilo que parecia apenas 'o seu jeito de ser' passa a ser compreendido."</p>
+        <p>Na terapia, vamos além de identificar o que está causando sofrimento. O objetivo é compreender como você pensa, sente, age e se relaciona, reconhecendo padrões que podem estar mantendo determinadas situações.</p>
+        <p>A partir dessa compreensão, você pode ampliar suas possibilidades de escolha e construir formas mais conscientes de se posicionar na própria vida.</p>
+        <p class="highlight">Quando você entende o que sente, começa a se pertencer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="howworks">
+  <div class="wrap">
+    <h2>Como funciona a terapia</h2>
+    <div class="howworks-grid">
+      <div class="howworks-item">
+        <div class="num">01</div>
+        <h3>Primeiro encontro</h3>
+        <p>Entendemos o que está acontecendo e o que trouxe você até a terapia.</p>
+      </div>
+      <div class="howworks-item">
+        <div class="num">02</div>
+        <h3>Compreensão dos padrões</h3>
+        <p>Identificamos pensamentos, emoções, comportamentos e formas de se relacionar.</p>
+      </div>
+      <div class="howworks-item">
+        <div class="num">03</div>
+        <h3>Trabalho terapêutico</h3>
+        <p>A partir disso, trabalhamos os padrões e dificuldades que estão interferindo na sua vida.</p>
+      </div>
+      <div class="howworks-item">
+        <div class="num">04</div>
+        <h3>Novas possibilidades</h3>
+        <p>O objetivo é ampliar sua consciência e sua capacidade de fazer escolhas mais coerentes com quem você é e com o que deseja viver.</p>
       </div>
     </div>
   </div>
@@ -433,14 +619,65 @@
   </div>
 </section>
 
+<section class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <h2>Sobre mim</h2>
+      <div class="about-copy">
+        <p>Sou Rosângela Marques, psicóloga clínica, e meu trabalho é voltado principalmente para mulheres que, apesar de funcionarem bem por fora, estão cansadas de sustentar tudo sozinhas por dentro.</p>
+        <p>Meu trabalho parte da compreensão de que aquilo que sentimos, pensamos e fazemos não acontece por acaso. Na terapia, buscamos compreender esses padrões para que você possa deixar de apenas reagir ao que acontece e começar a fazer escolhas mais conscientes.</p>
+        <p>Minha prática tem a Terapia Cognitivo-Comportamental como base, considerando a história e a singularidade de cada pessoa.</p>
+        <div class="about-meta">
+          <div>
+            <div class="label">Formação</div>
+            <div>Psicologia Clínica · TCC</div>
+          </div>
+          <div>
+            <div class="label">Registro</div>
+            <div>CRP 06/150842</div>
+          </div>
+          <div>
+            <div class="label">Atendimento</div>
+            <div>Online e presencial</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Formato</div>
+        <div class="value">Individual</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Modalidade</div>
+        <div class="value">Presencial e online</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Duração</div>
+        <div class="value">Sessões de 50 min</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Frequência</div>
+        <div class="value">Encontros semanais</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta">
   <div class="wrap">
     <div class="cta-grid">
       <div class="cta-copy">
         <h2>Comece a incluir você na própria vida.</h2>
-        <p>A terapia pode ser um espaço para compreender o que você vive, ampliar sua consciência sobre suas escolhas e construir formas mais coerentes de se relacionar consigo mesma e com os outros.</p>
+        <p class="lead">Você não precisa entender tudo antes de procurar terapia.</p>
+        <p class="support">Se você se reconheceu nessa forma de funcionar, podemos conversar.</p>
         <a href="https://wa.me/5538999294710" class="btn" target="_blank" rel="noopener">
-          Agendar atendimento
+          Quero conversar
         </a>
       </div>
       <div class="cta-photo">
